@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vertical Sankey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
+
+    <script type="text/javascript" src="scripts/jquery/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="scripts/d3/d3.js"></script>
+    <script src="scripts/sankey.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="chart" class="main">
+            <div class="sidebar">
+                <div class="toggle-buttons">
+                    <button onclick="relayout(0)" class="active">Chart<br>Size of Lead</button>
+                    <button onclick="relayout(1)">Chart<br>Electoral Votes</button>
+                </div>
+                <div class="item">
+                    <strong>Obama Re-elected</strong>
+                    <p>The country voted about 5 percentage points more Republican in 2012 than in 2008. Obama lost North Carolina and Indiana, but won every tossup except Florida, which remains too close to call.</p>
+                    <button onclick="highlight_states([5, 9, 12, 30, 35, 45, 48])">Highlight Tossups</button>
+                </div>
+                <div class="item">
+                    <strong>As Goes Ohio</strong>
+                    <p>Ohio, which has voted for the winner in every election since 1964, provided the decisive electoral votes in 2004, and it is the state likeliest to play that role again this year, according to the FiveThirtyEight model.</p>
+                    <button onclick="highlight_states([35])">Highlight Ohio</button>
+                </div>
+                <div class="item">
+                    <strong>Incumbent Stability</strong>
+                    <p>When an incumbent runs for re-election, fewer states typically change party affiliation: only three states shifted from 2000 to 2004, and five from 1992 to 1996. Yet incumbency is no guarantee of victory. Bill Clinton defeated the
+                        first President George Bush by winning 22 previously Republican states.</p>
+                </div>
+                <div class="item">
+                    <strong>Former Swingers</strong>
+                    <p>Although now labeled a “safe” Democratic state, New Jersey was once considered a swing state. California, now another “safe” Democratic state, voted Republican in 9 out of 10 elections from 1952 to 1988.</p>
+                    <button onclick="highlight_states([4, 31])">Highlight New Jersey & California</button>
+                </div>
+                <div class="item">
+                    <strong>Home-State Advantage</strong>
+                    <p>In 1976, Jimmy Carter had one of the largest home-state advantages in history. This advantage is one possible reason the Romney campaign hopes to capture Representative Paul D. Ryan’s home state, Wisconsin, this year.</p>
+                    <button onclick="highlight_states([10])">Highlight Georgia</button>
+                </div>
+                <div class="item">
+                    <strong>A Switch in the South</strong>
+                    <p>After the passage of the Civil Rights Act in 1964, many whites in the South began voting for Republicans. Barry Goldwater, who opposed the act, carried several Southern states in 1964. (Lyndon B. Johnson was not on the ballot in Alabama.)</p>
+                    <button onclick="highlight_states([1, 10, 18, 25, 40])">Highlight Southern States</button>
+                </div>
+            </div>
+            <div id="tooltip">
+                <div class="state">California</div>
+                <div class="votes">3 electoral votes</div>
+                <div>
+                    <span class="dem">58.4%</span> D
+                    <span class="rep">41.6%</span> R
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/chart.js"></script>
+    <script>
+        $('.sidebar .toggle-buttons button').on('click', function(e) {
+            $('.sidebar .toggle-buttons button').removeClass('active');
+            $(e.target).addClass('active');
+        })
+
+        $('.sidebar .item button').on('click', function(e) {
+            if ($(e.target).hasClass('active')) {
+                e.preventDefault();
+                $(e.target).removeClass('active');
+
+                highlight_states([]);
+            } else {
+                $('.sidebar .item button').removeClass('active');
+                $(e.target).addClass('active');
+            }
+        })
+    </script>
+</body>
+
+</html>

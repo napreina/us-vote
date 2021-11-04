@@ -1,0 +1,94 @@
+body {
+    background-color: white;
+}
+
+.container {
+    width: 930px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar {
+    position: relative;
+    width: 210px;
+}
+
+.sidebar .item {
+    position: absolute;
+    font-size: 14px;
+    width: 100%;
+    opacity: 0;
+}
+
+.sidebar .item p {
+    color: #777;
+}
+
+.sidebar .toggle-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sidebar .item button {
+    width: 100%;
+}
+
+.sidebar button {
+    font-size: 11px;
+    padding: 5px 10px;
+}
+
+.sidebar button.active {
+    border: 2px solid #F7BCA3;
+    background: #eee;
+}
+
+#chart {
+    position: relative;
+}
+
+#tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    text-align: center;
+    padding: 7px;
+    visibility: hidden;
+}
+
+#tooltip .state {
+    font-size: 13px;
+}
+
+#tooltip .votes {
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+#tooltip .dem {
+    color: rgb(57, 121, 185);
+}
+
+#tooltip .rep {
+    color: rgb(209, 69, 74);
+    margin-left: 5px;
+}
+
+.node rect {
+    cursor: pointer;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+}
+
+.node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+    cursor: pointer;
+    fill: none;
+}
